@@ -3,6 +3,7 @@ import string
 import inflect
 import spacy
 import truecase
+from string import punctuation
 from nltk.tokenize import word_tokenize
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.corpus import stopwords
@@ -171,7 +172,8 @@ def has_long_none(words_none):
 
 has_long_none([',tr,,,he'])
 
-def get_sentence_concreteness(sentence, verbose=False):
+def get_sentence_concreteness(sentence, verbose=False, num_unmatched_words_allowed=3):
+    sentence = sentence.lower()
     entities, num_entities = run_NER(sentence.replace('-', ' '))
     entities_tokens = [words for seg in entities for words in str(seg).lower().split()]
 
@@ -181,6 +183,9 @@ def get_sentence_concreteness(sentence, verbose=False):
     words = [w for w in words if not w.isnumeric()]
 
     words_none = [x for x in words if get_concreteness(x) == None]
+    words_none = [x for x in words_none if x not in punctuation]
+    if len(words_none) > num_unmatched_words_allowed:
+        return "Sentence has more than three words with no matched concreteness. To allow more than three unmatched words, set `num_unmatched_words_allowed` to your desired threshold."
     words_not_none = [x for x in words if get_concreteness(x) != None]
 
     concreteness_values_all = [get_concreteness(x) for x in words_not_none]
@@ -189,6 +194,7 @@ def get_sentence_concreteness(sentence, verbose=False):
     concreteness_all = sum(concreteness_values_all)/len(concreteness_values_all)
     if verbose==True:
         print('SENTENCE IS:', sentence)
+        print(words_none)
         print('overall sentence concreteness:', concreteness_all)
         # print('overall headline concreteness:', 5-concreteness_all)
         print('breakdown of concreteness value for each word:', 
