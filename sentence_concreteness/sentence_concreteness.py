@@ -185,16 +185,17 @@ def get_sentence_concreteness(sentence, verbose=False, num_unmatched_words_allow
     words_none = [x for x in words if get_concreteness(x) == None]
     words_none = [x for x in words_none if x not in punctuation]
     if len(words_none) > num_unmatched_words_allowed:
-        return "Sentence has more than three words with no matched concreteness. To allow more than three unmatched words, set `num_unmatched_words_allowed` to your desired threshold."
+        return "Sentence has more than "+ str(num_unmatched_words_allowed) + " words with no matched concreteness. To allow more unmatched words, set `num_unmatched_words_allowed` to your desired threshold."
     words_not_none = [x for x in words if get_concreteness(x) != None]
 
     concreteness_values_all = [get_concreteness(x) for x in words_not_none]
     concreteness_values_all = concreteness_values_all + [5]*num_entities
 
+    if len(concreteness_values_all) == 0:
+        return "This sentence had no recognized words and no concreteness rating can be provided."
     concreteness_all = sum(concreteness_values_all)/len(concreteness_values_all)
     if verbose==True:
         print('SENTENCE IS:', sentence)
-        print(words_none)
         print('overall sentence concreteness:', concreteness_all)
         # print('overall headline concreteness:', 5-concreteness_all)
         print('breakdown of concreteness value for each word:', 

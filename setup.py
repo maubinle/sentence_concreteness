@@ -7,6 +7,7 @@ setuptools.setup(
     name="sentence_concreteness",
     version="0.0.0",
     author="Marianne Aubin Le Quere",
+    license="MIT", 
     author_email="msa258@cornell.edu",
     description="A function to tag sentences with a validated measure of sentence concreteness",
     long_description=long_description,
@@ -15,8 +16,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=['csv', 'string', 'inflect', 'spacy', 'truecase', 'nltk']
 )
