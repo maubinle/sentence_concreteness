@@ -12,7 +12,7 @@ nlp = spacy.load("en_core_web_sm")
 inf = inflect.engine()
 lemma = WordNetLemmatizer()
 
-concreteness_file='/Users/marianneaubin/Documents/Research/data/concreteness_ratings.csv'
+concreteness_file='concreteness_ratings.csv'
 concreteness_dict = {}
 
 ner_entity_types = ['GPE', 'PERSON', 'ORG']
