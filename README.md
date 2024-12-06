@@ -42,6 +42,10 @@ Returns the matched concreteness for a sentence word. For each word, this method
 To calculate concreteness ratings, we first identify any person, place, or organizational entities in a headline using the spaCy package, and encode these entities with the highest concreteness score of 5. We then split our headline into a list of tokens and remove standardized stopwords from the headline. We ignore punctuation and cardinal numbers. From the remaining list of tokens, we take an iterative approach to mapping each token to its concreteness rating, checking between each step if the words maps to a concreteness rating. At each step, if we cannot yet retrieve a concreteness rating for a token, we first attempt to retrieve a singular version of the token (e.g. "elephants" &rarr; "elephant"), a present tense version (e.g. "lounged" &rarr; "lounge"), or a base adjective (e.g. "greatest" &rarr; "great").
 If these steps all fail and a word is hyphenated, we take the average of both words (e.g. "super-spectacular" &rarr; "super", "spectacular"). 
 
+
+## Limitations
+This scale was validated in the context of news headlines by the publisher Upworthy. Additionally, we selected headlines that were between 14 and 16 words. While the measure can be used more generally to tag sentences and for different sentence lengths, scholars may want to conduct additional validation to ensure the scale works for their specific context.
+
 ## Resources used
 
 https://maria-antoniak.github.io/2020/03/25/pip.html \
