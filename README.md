@@ -44,7 +44,9 @@ If these steps all fail and a word is hyphenated, we take the average of both wo
 
 
 ## Limitations
-This scale was validated in the context of news headlines by the publisher Upworthy. Additionally, we selected headlines that were between 14 and 16 words. While the measure can be used more generally to tag sentences and for different sentence lengths, scholars may want to conduct additional validation to ensure the scale works for their specific context.
+This scale was validated in the context of news headlines by the publisher Upworthy. Additionally, we selected headlines that were between 14 and 16 words. While the measure can be used more generally to tag sentences and for different sentence lengths, scholars may want to conduct additional validation to ensure the scale works for their specific context. 
+
+In very rare instances, `truecase` behaves non-deterministically, which can impact the NER results and therefore make the final concreteness score non-deterministic. In my experience, this only happens about once every 10,000 sentences, but is something to be aware of nontheless. This issue can be solved by removing `truecase`, which may or may not be appropriate for your use case.
 
 ## Resources used
 
