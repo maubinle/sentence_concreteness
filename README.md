@@ -7,6 +7,7 @@ This method has been empirically validated in our paper. If you find it helpful,
 
 ## Installation
 `pip install sentence_concreteness`
+`python -m spacy download en_core_web_sm`
 
 ## Requirements
    * `csv`
