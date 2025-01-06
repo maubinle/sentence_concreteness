@@ -3,10 +3,12 @@
 This is a package for tagging sentences with their concreteness. The measure is an average of words in a sentence. Words are matched to their root form and person, place, or organizational entities are tagged with a maximum concretenes of 5. The word concreteness ratings that this package relies upon were provided by Brysbaert, Warriner & Kuperman (2013).
 
 This method has been empirically validated in our paper. If you find it helpful, please consider using the following citation:
-> Aubin Le Quéré, M., Matias, J. N. (2024). When Curiosity Gaps Backfire: Effects of Headline Concreteness on Information Selection Decisions. Under Review.
+> Aubin Le Quéré, M., Matias, J.N. When curiosity gaps backfire: effects of headline concreteness on information selection decisions. Sci Rep 15, 994 (2025). (https://doi.org/10.1038/s41598-024-81575-9)[https://doi.org/10.1038/s41598-024-81575-9]
 
 ## Installation
 `pip install sentence_concreteness`
+
+You will also need to download the spacy model. \
 `python -m spacy download en_core_web_sm`
 
 ## Requirements
@@ -18,7 +20,8 @@ This method has been empirically validated in our paper. If you find it helpful,
    * `nltk`
 
 ## Usage
-See `demo.py` for an example of how to run sentence_concreteness.
+See `demo.py` for an example of how to run sentence_concreteness. \
+Note: The python package is still experimental, please [contact Marianne](msa258@cornell.edu) if you encounter any issues.
 
 ## Documentation
 ### `get_concreteness(word)`
